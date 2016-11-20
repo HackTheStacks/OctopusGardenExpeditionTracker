@@ -7,6 +7,7 @@
 	<script src="js/vendor/jquery/dist/jquery.js"></script>
 	<script src="js/vendor/chosen/chosen.jquery.js"></script>
 	<script src="js/vendor/validatejs/validate.js"></script>
+	<script src="js/vender/date-format/dateformat.min.js"></script>
 	<script src="js/forms.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<style>
@@ -62,7 +63,8 @@ div.panel.show {
 				<hr>
 				<div class="input">
 					<label for="expeditionName">Name of primary researcher</label>
-					<input type="text" name="creator">
+					<input type="text" name="creator" id="expedition-person">
+					<ul id="expedition-person-autocomplete"></ul>
 				</div>
 				<div class="input">
 					<label for="expeditionName">Name of expedition</label>
@@ -70,7 +72,8 @@ div.panel.show {
 				</div>
 				<div class="input">
 					<label for="expeditionName">Location of expedition</label>
-					<input type="text" name="creator">
+					<input type="text" name="creator" id="expedition-location">
+					<ul id="expedition-location-autocomplete"></ul>
 				</div>
 				<div class="input input-half-width">
 					<label for="expeditionName">First year of expedition</label>
@@ -174,7 +177,7 @@ div.panel.show {
 		<br>
 		<hr>
 	</main>
-	
+
 	<main>
 	<h3>About</h3>
 	<p style="margin-left:5em;margin-right:5em;">
@@ -193,8 +196,8 @@ div.panel.show {
 	<hr>
 	</p>
 	</main>
-	
-	
+
+
 
 
 <h3>Who should use Expedition Tracker?</h3>
@@ -242,6 +245,3 @@ for (i = 0; i < acc.length; i++) {
 <br>
 <br>
 </body>
-	
-	
-	

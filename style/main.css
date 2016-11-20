@@ -22,3 +22,21 @@ h3{
 #hidden-html{
 	display: none;
 }
+
+ul{
+	padding: 0;
+	margin-bottom: 36px;
+	margin-top: 8px;
+}
+
+li{
+	font-size: 14px;
+	display: block;
+	color: #46F;
+	cursor: pointer;
+	padding: 2px 4px;
+	line-height: 18px;
+}
+li:hover{
+	color: #68F;
+}
