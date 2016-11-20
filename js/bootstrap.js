@@ -15,11 +15,26 @@ $.fn.serializeObject = function(){
 };
 
 
-var FormSetup = function(XEAC){
+var FormSetup = function(AS, XEAC){
   $('select').chosen();
+
+  // submission
   $('form').on('submit', function(event){
     event.preventDefault();
-    var data = $(this).serializeObject();
+    if( ($("#expedition-name").val()) && !($("#expedition-name-id").val()) ){
+      newExpedition(
+        $("#expedition-name").val(),
+        $("#expedition-location").val(),
+        $("#expedition-description").val(),
+        $("#expedition-person").val()
+      );
+    }
+    if( ($("#expedition-person").val()) && !($("#expedition-person-id").val()) ){
+      newResearcher(
+        $("#expedition-person").val(),
+        $("#expedition-name").val()
+      )
+    }
   });
 
   // person name
@@ -42,6 +57,35 @@ var FormSetup = function(XEAC){
               });
             })(person);
             $("#expedition-person-autocomplete").append(item);
+          });
+        });
+      }
+    }, 300);
+  });
+
+  // expedition name
+  var nameTimeout = null;
+  $("#expedition-name").on('keyup', function(ev){
+    if( nameTimeout ){
+      clearTimeout(nameTimeout);
+    }
+    nameTimeout = setTimeout(function(){
+      $("#expedition-name-autocomplete").empty();
+      if( ev.target.value.length > 0 ){
+        XEAC.searchExpeditions(ev.target.value, function(expeditions){
+          expeditions.forEach(function(exped){
+            if( exped.primary_type !== "agent_corporate_entity" ){
+              return;
+            }
+            var item = $("<li>"+exped.title+"</li>");
+            (function(exp){
+              item.click(function(ev){
+                $("#expedition-name").val(exp.title);
+                $("#expedition-name-id").val(exp.id);
+                $("#expedition-name-autocomplete").empty();
+              });
+            })(exped);
+            $("#expedition-name-autocomplete").append(item);
           });
         });
       }
@@ -135,7 +179,7 @@ var XEACSetup = function(){
   var XEAC_URL = "http://10.20.40.218:3000/";
   var XEAC_PATHS = {
     PEOPLE: "api/v1/people?name=${query}",
-    EXPEDITIONS: "api/v1/expeditions?name=${query}"
+    EXPEDITIONS: "api/v1/search?q=${query}"
   };
   var LOCATIONS = [
     "Algeria","Angola","Benin","Botswana","Bono","Buganda","Burkina Faso","Burundi","Cameroon","Cape Verde","Central African Republic","Chad","Comoros","Congo","Côte d'Ivoire","Dahomey","Democratic Republic of the Congo","Djibouti","D'mt","Egypt","Egypt","Equatorial Guinea","Eritrea","Ethiopia","Fulani Empire","Gabon","Gao","Ghana","Gonja Kingdom","Ghana empire","Guinea","Guinea-Bissau","Kaabu","Kanem-Borno","Kenya","Kazembe","Kilwa","Kong","Lesotho","Liberia","Libya","Lozi","Madagascar","Luba Empire","Malawi","Mali","Mali Empire","Lunda Empire","Mauritania","Mauritius","Mapungubwe","Matapa","Morocco","Mozambique","Namibia","Niger","Mossi","Nigeria","Ngoyo","Numidia","Parc National du W du Niger","Ptolemaic Kingdom","Rwanda","Punt","Sao Tome and Principe","Senegal","Rustamid imamate","Seychelles","Sierra Leone","Somalia","Songhai Empire","South Africa","South Sudan","Sudan","Swaziland","Tanzania","The Gambia","Togo","Tunisia","Uganda","Takrur","Zambia","Zimbabwe",
@@ -170,6 +214,6 @@ var XEACSetup = function(){
 jQuery(function(){
   var AS = ASSetup();
   var XEAC = XEACSetup();
-  FormSetup(XEAC);
+  FormSetup(AS, XEAC);
   PageSetup();
 });

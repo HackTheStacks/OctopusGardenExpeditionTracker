@@ -7,9 +7,10 @@
 	<script src="js/vendor/jquery/dist/jquery.js"></script>
 	<script src="js/vendor/chosen/chosen.jquery.js"></script>
 	<script src="js/vendor/validatejs/validate.js"></script>
-	<script src="js/vender/date-format/dateformat.min.js"></script>
+	<script src="js/vendor/date-format/dateformat.min.js"></script>
 	<script src="js/forms.js"></script>
 	<script src="js/bootstrap.js"></script>
+	<script src="js/xeacbuilder.js"></script>
 	<style>
 button.accordion {
     background-color: #5aaf5c;
@@ -64,10 +65,13 @@ div.panel.show {
 					<label for="expeditionName">Name of primary researcher</label>
 					<input type="text" name="creator" id="expedition-person">
 					<ul id="expedition-person-autocomplete"></ul>
+					<input type="hidden" id="expedition-person-id"/>
 				</div>
 				<div class="input">
 					<label for="expeditionName">Name of expedition</label>
-					<input type="text" name="expeditionName">
+					<input type="text" name="expeditionName" id="expedition-name">
+					<ul id="expedition-name-autocomplete"></ul>
+					<input type="hidden" id="expedition-name-id"/>
 				</div>
 				<div class="input">
 					<label for="expeditionName">Location of expedition</label>
@@ -100,7 +104,7 @@ div.panel.show {
 				</div>
 				<div class="input">
 					<label for="expeditionName">Field notes</label>
-					<textarea></textarea>
+					<textarea id="expedition-description"></textarea>
 				</div>
 			</section>
 
@@ -162,7 +166,7 @@ div.panel.show {
 			</section>
 
 			<div class="input">
-				<button type="submit">Submit the stuff</button>
+				<button type="submit" id="submit">Submit the stuff</button>
 			</div>
 		</form>
 	</main>
