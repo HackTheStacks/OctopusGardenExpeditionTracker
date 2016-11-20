@@ -61,10 +61,34 @@ var ASSetup = function(){
 }
 
 var XEACSetup = function(){
-  var XEAC_URL = "http://data.library.amnh.org:8082/exist/rest/db";
+  var XEAC_URL = "http://data.library.amnh.org:8082/";
+  var XEAC_PATHS = {
+    SEARCH: "orbeon/xeac/results/?q=${query}%20AND%20entityType_facet:%22person%22"
+  }
 
   return {
-
+    searchPeople: function(term, onSuccess){
+      $.post({
+        url: XEAC_URL + XEAC_PATHS.SEARCH.replace("${query}",term),
+        user:
+        contentType: "application/json",
+        data: JSON.stringify(expedition),
+        success: function(resp){
+          var hiddenDiv = document.createElement("div");
+          hiddenDiv.innerHTML = resp
+          var h3s = hiddenDiv.getElementsByTagName("h3");
+          var results = [];
+          for( var ix=2; ix < h3s.length; ix++ ){
+            var header = h3s[ix];
+            results.push({
+              name: header.innerText,
+              id: header.getElementsByTagName("a")[0].href.substring(49)
+            });
+          }
+          onSuccess(JSON.parse(resp));
+        }
+      });
+    }
   }
 }
 
