@@ -16,10 +16,19 @@ $.fn.serializeObject = function(){
 
 
 var FormSetup = function(){
+  $('select').chosen();
   $('form').on('submit', function(event){
     event.preventDefault();
     var data = $(this).serializeObject();
   });
+}
+
+var PageSetup = function(){
+  $('button.add-your-expedition').on('click', function(){
+    $("html, body").stop().animate({scrollTop: $('form').position().top}, '500', 'swing', function() { 
+
+    });
+  })
 }
 
 
@@ -70,7 +79,7 @@ var XEACSetup = function(){
     searchPeople: function(term, onSuccess){
       $.post({
         url: XEAC_URL + XEAC_PATHS.SEARCH.replace("${query}",term),
-        user:
+        user: null,
         contentType: "application/json",
         data: JSON.stringify(expedition),
         success: function(resp){
@@ -92,10 +101,9 @@ var XEACSetup = function(){
   }
 }
 
-
-
 jQuery(function(){
   FormSetup();
+  PageSetup();
   var AS = ASSetup();
   var XEAC = XEACSetup();
 });
