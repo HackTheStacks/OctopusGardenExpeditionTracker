@@ -15,7 +15,7 @@ $.fn.serializeObject = function(){
 };
 
 
-var  FormSetup = function(){
+var FormSetup = function(){
   $('form').on('submit', function(event){
     event.preventDefault();
     var data = $(this).serializeObject();
@@ -23,24 +23,42 @@ var  FormSetup = function(){
 }
 
 
-var APISetup = function(){
+var ASSetup = function(){
   var ARCHIVESPACE_USERNAME = "jlee";
   var ARCHIVESPACE_PASSWORD = "hackathon";
   var ARCHIVESPACE_URL = "http://data.library.amnh.org:8081/";
+  var ARCHIVESPACE_PATHS = {
+    LOGIN: "users/"+ARCHIVESPACE_USERNAME+"/login",
+    EXPEDITION: "repositories/4/resources"  // http://archivesspace.github.io/archivesspace/api/#post-repositories-repo_id-resources
+  };
+  var DEFAULT_HEADERS = {"X-ArchivesSpace-Session":null};
+
 
   return {
     ASLogin: function(onSuccess, onError){
       $.post({
-        url: ARCHIVESPACE_URL + "users/"+ARCHIVESPACE_USERNAME+"/login",
+        url: ARCHIVESPACE_URL + ARCHIVESPACE_PATHS.LOGIN,
         password: ARCHIVESPACE_PASSWORD,
         success: function(resp){
           var response = JSON.parse(resp);
-          localStorage.set("session",response.session);
+          DEFAULT_HEADERS["X-ArchivesSpace-Session"] = response.session;
           onSuccess(response);
         }
       });
     }
+  },
+  createExpedition: function(expedition, ){
+    $.post({
+      url: ARCHIVESPACE_URL + ARCHIVESPACE_PATHS.LOGIN,
+      password: ARCHIVESPACE_PASSWORD,
+      success: function(resp){
+        var response = JSON.parse(resp);
+        DEFAULT_HEADERS["X-ArchivesSpace-Session"] = response.session;
+        onSuccess(response);
+      }
+    });
   }
+
 
 }
 
@@ -48,5 +66,6 @@ var APISetup = function(){
 
 jQuery(function(){
   FormSetup();
-  var API = APISetup();
+  var AS = ASSetup();
+  var XEAC = XEACSetup();
 });
