@@ -4,6 +4,9 @@
 	<link rel="stylesheet" href="style/forms.css" type="text/css"></style>
 	<link rel="stylesheet" href="style/slides.css" type="text/css"></style>
 	<script src="js/vendor/jquery/dist/jquery.js"></script>
+	<script src="js/vendor/chosen/chosen.jquery.js"></script>
+	<script src="js/vendor/validatejs/validate.js"></script>
+	<script src="js/forms.js"></script>
 	<script src="js/bootstrap.js"></script>
 </head>
 <body>
@@ -18,50 +21,96 @@
 		<p>Open science research from the field</p>
 		<button>Add your expedition</button>
 	</div>
-	<main>
+	<main class="form">
 
-		<h1>Expedtion Tracker</h1>
-		<p>
-			An ArchivesSpace Integrated Tool to Track/Manage Fieldnotes & Expedition Media
-		</p>
-		<hr>
+
 		<form>
-			<div class="input">
-				<label for="expeditionName">Expedition Name</label>
-				<input type="text" name="expeditionName">
-			</div>
-			<div class="input">
-				<label for="expeditionName">Expedition Location</label>
-				<input type="text" name="creator">
-			</div>
-			<div class="input">
-				<label for="expeditionName">Expedition Start Date</label>
-				<select name="expeditionStartDate">
-					<option>2000</option>
-					<option>2001</option>
-					<option>2002</option>
-					<option>2003</option>
-					<option>2004</option>
-					<option>2005</option>
-					<option>2006</option>
-				<select>
-			</div>
-			<div class="input">
-				<label for="expeditionName">Expedition End Date</label>
-				<select name="expeditionEndDate">
-					<option>2000</option>
-					<option>2001</option>
-					<option>2002</option>
-					<option>2003</option>
-					<option>2004</option>
-					<option>2005</option>
-					<option>2006</option>
-				<select>
-			</div>
-			<div class="input">
-				<label for="expeditionName">Researcher</label>
-				<input type="text" name="creator">
-			</div>
+			<section>
+				<h2>Expedtion Details</h2>
+				<p>
+					An ArchivesSpace Integrated Tool to Track/Manage Fieldnotes & Expedition Media
+				</p>
+				<hr>
+				<div class="input">
+					<label for="expeditionName">Name of primary researcher</label>
+					<input type="text" name="creator">
+				</div>
+				<div class="input">
+					<label for="expeditionName">Name of expedition</label>
+					<input type="text" name="expeditionName">
+				</div>
+				<div class="input">
+					<label for="expeditionName">Location of expedition</label>
+					<input type="text" name="creator">
+				</div>
+				<div class="input">
+					<label for="expeditionName">First year of expedition</label>
+					<select name="expeditionStartDate">
+						<option>2000</option>
+						<option>2001</option>
+						<option>2002</option>
+						<option>2003</option>
+						<option>2004</option>
+						<option>2005</option>
+						<option>2006</option>
+					<select>
+				</div>
+				<div class="input">
+					<label for="expeditionName">Last year of expedition</label>
+					<select name="expeditionEndDate">
+						<option>2000</option>
+						<option>2001</option>
+						<option>2002</option>
+						<option>2003</option>
+						<option>2004</option>
+						<option>2005</option>
+						<option>2006</option>
+					<select>
+				</div>
+				<div class="input">
+					<label for="expeditionName">Field notes</label>
+					<textarea></textarea>
+				</div>
+			</section>
+
+			<section>
+				<h2>Media Sources</h2>
+				<div class="media">
+					<span class="number">1.</span>
+					<div class="input">
+						<label>Describe the format of this media</label>
+						<input type="text" name="media[0][format]" value="Thumbdrive">
+					</div>
+					<div class="input">
+						<label>Describe how to find this media</label>
+						<input type="text" name="media[0][format]" value="Expedition box in some department of AMNH">
+					</div>
+				</div>
+				<div class="media">
+					<span class="number">2.</span>
+					<div class="input">
+						<label>Media Desceiption</label>
+						<input type="text" name="media[0][format]" value="Hard disk">
+					</div>
+					<div class="input">
+						<label>Media Format</label>
+						<select>
+							<optgroup label="Digital">
+								<option>Hard Disk</option>
+								<option>Thumb Drive</option>
+								<option>Other</option>
+							</optgroup>
+							<optgroup label="Physical">
+								<option>Printed images</option>
+								<option>Book</option>
+								<option>Notes</option>
+							</optgroup>
+						</select>
+					</div>
+				</div>
+				<button class="full-width-button">+ add media source</button>
+			</section>
+
 			<div class="input">
 				<button type="submit">Submit the stuff</button>
 			</div>

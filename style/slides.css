@@ -1,7 +1,7 @@
 .slide-overlay{
 	position: absolute;
 	top: 20%;
-	left: 20%;
+	left: 15%;
 	color: #fff;
 }
 .slide-overlay .logo{
@@ -18,7 +18,10 @@
 }
 .slide-overlay h1{
 	font-weight: normal;
-	font-size: 3em;
+	font-size: 4em;
+}
+.slide-overlay p{
+	font-size: 1.5em;
 }
 .slide-container{
 	width:100%;
@@ -29,32 +32,32 @@
 	position: absolute;
 	height: 100%;
 	width: 100%;
-	transition: opacity 4s;
+	transition: opacity .5s;
 	opacity: 1;
 }
 .slide-1{
-	animation: xfade 30s 20s infinite;
+	animation: xfade 30s linear 20s infinite;
 	background-image: url(../img/expedition-slides/slide-1.jpg);
 }
 .slide-2{
-	animation: xfade 30s 10s infinite;
+	animation: xfade 30s linear 10s infinite;
 	background-image: url(../img/expedition-slides/slide-2.jpg);
 }
 .slide-3{
-	animation: xfade 30s 0s infinite;
+	animation: xfade 30s linear 0s infinite;
 	background-image: url(../img/expedition-slides/slide-3.jpg);
 }
 @keyframes xfade{
    0%{
       opacity: 1;
    }
-   10.5% {
+   47% {
       opacity:1;
    }
-   12.5%{
+   50%{
       opacity: 0;
    }
-   98% {
+   97% {
       opacity:0;
    }
    100% {
