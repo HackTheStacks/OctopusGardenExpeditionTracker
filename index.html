@@ -3,6 +3,7 @@
 	<link rel="stylesheet" href="style/main.css" type="text/css"></style>
 	<link rel="stylesheet" href="style/forms.css" type="text/css"></style>
 	<link rel="stylesheet" href="style/slides.css" type="text/css"></style>
+	<link rel="stylesheet" href="js/vendor/chosen/chosen.css" type="text/css"></style>
 	<script src="js/vendor/jquery/dist/jquery.js"></script>
 	<script src="js/vendor/chosen/chosen.jquery.js"></script>
 	<script src="js/vendor/validatejs/validate.js"></script>
@@ -15,15 +16,14 @@
 		<div class="slide slide-2"></div>
 		<div class="slide slide-3"></div>
 	</div>
-	<div class="slide-overlay">
+	<div class="slide-color-overlay"></div>
+	<div class="slide-content-overlay">
 		<img class="logo" src="img/amnh-logo.png">
 		<h1>Expedition Tracker</h1>
 		<p>Open science research from the field</p>
-		<button>Add your expedition</button>
+		<button class="add-your-expedition">Add your expedition</button>
 	</div>
 	<main class="form">
-
-
 		<form>
 			<section>
 				<h2>Expedtion Details</h2>
@@ -43,7 +43,7 @@
 					<label for="expeditionName">Location of expedition</label>
 					<input type="text" name="creator">
 				</div>
-				<div class="input">
+				<div class="input input-half-width">
 					<label for="expeditionName">First year of expedition</label>
 					<select name="expeditionStartDate">
 						<option>2000</option>
@@ -55,7 +55,7 @@
 						<option>2006</option>
 					<select>
 				</div>
-				<div class="input">
+				<div class="input input-half-width">
 					<label for="expeditionName">Last year of expedition</label>
 					<select name="expeditionEndDate">
 						<option>2000</option>
@@ -78,23 +78,42 @@
 				<div class="media">
 					<span class="number">1.</span>
 					<div class="input">
-						<label>Describe the format of this media</label>
-						<input type="text" name="media[0][format]" value="Thumbdrive">
+						<label>Identification Number</label>
+						<input type="text" name="media[1][id]" value="BF12">
 					</div>
 					<div class="input">
-						<label>Describe how to find this media</label>
-						<input type="text" name="media[0][format]" value="Expedition box in some department of AMNH">
+						<label>Describe the format of this media</label>
+						<input type="text" name="media[1][format]" value="Thumbdrive">
+					</div>
+					<div class="input">
+						<label>Media Format</label>
+						<select name="media[1][description]">
+							<optgroup label="Digital">
+								<option>Hard Disk</option>
+								<option>Thumb Drive</option>
+								<option>Other</option>
+							</optgroup>
+							<optgroup label="Physical">
+								<option>Printed images</option>
+								<option>Book</option>
+								<option>Notes</option>
+							</optgroup>
+						</select>
 					</div>
 				</div>
 				<div class="media">
 					<span class="number">2.</span>
 					<div class="input">
-						<label>Media Desceiption</label>
-						<input type="text" name="media[0][format]" value="Hard disk">
+						<label>Identification Number</label>
+						<input type="text" name="media[0][id]" value="BF12">
+					</div>
+					<div class="input">
+						<label>Media Description</label>
+						<input type="text" name="media[0][description]" value="Photographs of things">
 					</div>
 					<div class="input">
 						<label>Media Format</label>
-						<select>
+						<select name="media[0][description]">
 							<optgroup label="Digital">
 								<option>Hard Disk</option>
 								<option>Thumb Drive</option>
@@ -115,7 +134,7 @@
 				<button type="submit">Submit the stuff</button>
 			</div>
 		</form>
-		<div id="hidden-html" />
 	</main>
+
 </body>
 </html>

@@ -1,14 +1,21 @@
-.slide-overlay{
+.slide-content-overlay{
 	position: absolute;
 	top: 20%;
 	left: 15%;
 	color: #fff;
 }
-.slide-overlay .logo{
+.slide-color-overlay{
+	position: absolute;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background: rgba(45,67,160,0.5);
+}
+.slide-content-overlay .logo{
 	margin-bottom: 2em;
 	margin-left: -6em;
 }
-.slide-overlay button{
+.slide-content-overlay button{
 	background: transparent;
 	border: 2px solid #fff;
 	padding: 10px 15px;
@@ -16,11 +23,11 @@
 	font-weight: bold;
 	position: absolute;
 }
-.slide-overlay h1{
+.slide-content-overlay h1{
 	font-weight: normal;
 	font-size: 4em;
 }
-.slide-overlay p{
+.slide-content-overlay p{
 	font-size: 1.5em;
 }
 .slide-container{
@@ -29,6 +36,7 @@
 }
 .slide{
 	background-size: cover;
+	background-position: center center;
 	position: absolute;
 	height: 100%;
 	width: 100%;
