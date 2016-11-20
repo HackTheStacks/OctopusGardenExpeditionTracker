@@ -1,22 +1,49 @@
 <html>
 <head>
 	<link rel="stylesheet" href="style/style.css" type="text/css"></style>
+	<script src="js/vendor/jquery/dist/jquery.js"></script>
 	<script src="js/bootstrap.js"></script>
 </head>
 <body>
-	<form>
-		<div class="input">
-			<label for="expeditionName">Expedition Name</label>
-			<input type="text" name="expeditionName">
-		</div>
-		<div class="input">
-			<label for="expeditionName">Expedition Start Date</label>
-			<input type="text" name="expeditionStartDate">
-		</div>
-	</form>
-
-	<script>
-	    var picker = new Pikaday({ field: document.getElementById('expeditionStartDate') });
-	</script>
+	<main>
+		<h1>Expedtion Tracker</h1>
+		<p>
+			An ArchivesSpace Integrated Tool to Track/Manage Fieldnotes & Expedition Media
+		</p>
+		<hr>
+		<form>
+			<div class="input">
+				<label for="expeditionName">Expedition Name</label>
+				<input type="text" name="expeditionName">
+			</div>
+			<div class="input">
+				<label for="expeditionName">Expedition Start Date</label>
+				<select name="expeditionStartDate">
+					<option>2000</option>
+					<option>2001</option>
+					<option>2002</option>
+					<option>2003</option>
+					<option>2004</option>
+					<option>2005</option>
+					<option>2006</option>
+				<select>
+			</div>
+			<div class="input">
+				<label for="expeditionName">Expedition End Date</label>
+				<select name="expeditionEndDate">
+					<option>2000</option>
+					<option>2001</option>
+					<option>2002</option>
+					<option>2003</option>
+					<option>2004</option>
+					<option>2005</option>
+					<option>2006</option>
+				<select>
+			</div>
+			<div class="input">
+				<button type="submit">Submit the stuff</button>
+			</div>
+		</form>
+	</main>
 </body>
 </html>
