@@ -8,3 +8,6 @@ h2{
 	font-size: 2.5em;
 	font-weight: normal;
 }
+#hidden-html{
+	display: none;
+}
