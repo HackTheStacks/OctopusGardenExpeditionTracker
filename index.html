@@ -1,11 +1,25 @@
 <html>
-<head>
-	<link rel="stylesheet" href="style/style.css" type="text/css"></style>
+<head>	
+	<link rel="stylesheet" href="style/main.css" type="text/css"></style>
+	<link rel="stylesheet" href="style/forms.css" type="text/css"></style>
+	<link rel="stylesheet" href="style/slides.css" type="text/css"></style>
 	<script src="js/vendor/jquery/dist/jquery.js"></script>
 	<script src="js/bootstrap.js"></script>
 </head>
 <body>
+	<div class="slide-container">
+		<div class="slide slide-1"></div>
+		<div class="slide slide-2"></div>
+		<div class="slide slide-3"></div>
+	</div>
+	<div class="slide-overlay">
+		<img class="logo" src="img/amnh-logo.png">
+		<h1>Expedition Tracker</h1>
+		<p>Open science research from the field</p>
+		<button>Add your expedition</button>
+	</div>
 	<main>
+
 		<h1>Expedtion Tracker</h1>
 		<p>
 			An ArchivesSpace Integrated Tool to Track/Manage Fieldnotes & Expedition Media
@@ -15,6 +29,10 @@
 			<div class="input">
 				<label for="expeditionName">Expedition Name</label>
 				<input type="text" name="expeditionName">
+			</div>
+			<div class="input">
+				<label for="expeditionName">Expedition Location</label>
+				<input type="text" name="creator">
 			</div>
 			<div class="input">
 				<label for="expeditionName">Expedition Start Date</label>
@@ -39,6 +57,10 @@
 					<option>2005</option>
 					<option>2006</option>
 				<select>
+			</div>
+			<div class="input">
+				<label for="expeditionName">Researcher</label>
+				<input type="text" name="creator">
 			</div>
 			<div class="input">
 				<button type="submit">Submit the stuff</button>

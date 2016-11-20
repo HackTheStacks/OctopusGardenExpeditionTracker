@@ -1,0 +1,63 @@
+.slide-overlay{
+	position: absolute;
+	top: 20%;
+	left: 20%;
+	color: #fff;
+}
+.slide-overlay .logo{
+	margin-bottom: 2em;
+	margin-left: -6em;
+}
+.slide-overlay button{
+	background: transparent;
+	border: 2px solid #fff;
+	padding: 10px 15px;
+	text-transform: uppercase;
+	font-weight: bold;
+	position: absolute;
+}
+.slide-overlay h1{
+	font-weight: normal;
+	font-size: 3em;
+}
+.slide-container{
+	width:100%;
+	height:100%;
+}
+.slide{
+	background-size: cover;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	transition: opacity 4s;
+	opacity: 1;
+}
+.slide-1{
+	animation: xfade 30s 20s infinite;
+	background-image: url(../img/expedition-slides/slide-1.jpg);
+}
+.slide-2{
+	animation: xfade 30s 10s infinite;
+	background-image: url(../img/expedition-slides/slide-2.jpg);
+}
+.slide-3{
+	animation: xfade 30s 0s infinite;
+	background-image: url(../img/expedition-slides/slide-3.jpg);
+}
+@keyframes xfade{
+   0%{
+      opacity: 1;
+   }
+   10.5% {
+      opacity:1;
+   }
+   12.5%{
+      opacity: 0;
+   }
+   98% {
+      opacity:0;
+   }
+   100% {
+      opacity:1;
+   }
+}
