@@ -1,0 +1,25 @@
+{
+  "name": "OctopusGardenExpeditionTracker",
+  "version": "0.0.0",
+  "homepage": "https://HackTheStacks.github.io/OctopusGardenExpeditionTracker",
+  "authors": [
+    "Jesse Lee <mienaikoe@gmail.com>"
+  ],
+  "description": "Expedition Form tracking",
+  "main": "js/bootstrap.js",
+  "keywords": [
+    "hackthestacks",
+    "expedition",
+    "tracker",
+    "amnh"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "js/vendor",
+    "test",
+    "tests"
+  ]
+}
