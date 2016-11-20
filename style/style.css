@@ -1,9 +1,38 @@
 body{
 	line-height: 1.5em;
-	font-family: 'sans-serif';
+	font-family: sans-serif;
+}
+
+main{
+	width: 500px;
+	margin: 0 auto;
+}
+
+label{
+	width: 200px;
+	display: inline-block;
 }
 input[type=text]{
 	padding:5px 10px;
 	font-family: sans-serif;
 	border:1px solid #ddd;
+	font-size: 1em;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+div.input{
+	margin-bottom: 1em;
+}
+button{
+	font-size: 1em;
+	color: #fff;
+	background: #75cc77;
+	border: none;
+	padding: 10px 15px;
+	border-radius: 2px;
+	transition: .2s;
+}
+button:hover{
+	background-color: #5aaf5c;
 }

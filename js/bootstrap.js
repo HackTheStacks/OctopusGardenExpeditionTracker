@@ -1,60 +1,52 @@
-// Main Stuffs
+$.fn.serializeObject = function(){
+   var o = {};
+   var a = this.serializeArray();
+   $.each(a, function() {
+       if (o[this.name]) {
+           if (!o[this.name].push) {
+               o[this.name] = [o[this.name]];
+           }
+           o[this.name].push(this.value || '');
+       } else {
+           o[this.name] = this.value || '';
+       }
+   });
+   return o;
+};
 
-var Fetcher = {
 
-  get: function(url, onSuccess, onError){
-    var req = new XMLHttpRequest();
-    req.onreadystatechange = function(){
-      if( req.readyState === XMLHttpRequest.DONE ){
-        if( req.status === 200 ){
-          onSuccess(req.responseText);
-        } else {
-          onError( req.status, req.responseText);
+var  FormSetup = function(){
+  $('form').on('submit', function(event){
+    event.preventDefault();
+    var data = $(this).serializeObject();
+  });
+}
+
+
+var APISetup = function(){
+  var ARCHIVESPACE_USERNAME = "jlee";
+  var ARCHIVESPACE_PASSWORD = "hackathon";
+  var ARCHIVESPACE_URL = "http://data.library.amnh.org:8081/";
+
+  return {
+    ASLogin: function(onSuccess, onError){
+      $.post({
+        url: ARCHIVESPACE_URL + "users/"+ARCHIVESPACE_USERNAME+"/login",
+        password: ARCHIVESPACE_PASSWORD,
+        success: function(resp){
+          var response = JSON.parse(resp);
+          localStorage.set("session",response.session);
+          onSuccess(response);
         }
-      }
+      });
     }
-    req.open("GET", url);
-    req.send();
-  },
-
-  post: function(url, user, password, onSuccess, onError){
-    var req = new XMLHttpRequest();
-    req.onreadystatechange = function(){
-      if( req.readyState === XMLHttpRequest.DONE ){
-        if( req.status === 200 ){
-          onSuccess(req.responseText);
-        } else {
-          onError( req.status, req.responseText);
-        }
-      }
-    }
-    req.open("POST", url, true, user, password);
-    req.send();
-  },
+  }
 
 }
 
 
 
-function(){
-  var ARCHIVESPACE_USERNAME = "jlee";
-  var ARCHIVESPACE_PASSWORD = "hackathon";
-  var ARCHIVESPACE_URL = "http://data.library.amnh.org:8081/";
-
-  var ASLogin(onSuccess, onError){
-    Fetcher.post(ARCHIVESPACE_URL + "users/"+ARCHIVESPACE_USERNAME+"/login", ARCHIVESPACE_USERNAME, ARCHIVESPACE_PASSWORD, function(resp){
-      var response = JSON.parse(resp);
-      localStorage.set("session",response.session);
-      onSuccess(response);
-    }, function(status, message){
-      alert(message);
-    });
-  }
-
-
-
-
-
-
-
-}();
+jQuery(function(){
+  FormSetup();
+  var API = APISetup();
+});
