@@ -1,13 +1,24 @@
 body{
 	line-height: 1.5em;
-	font-family: sans-serif;
+	font-family: tahoma;
 	padding: 0;
-	margin: 0;
+	
 }
 h2{
-	font-size: 2.5em;
+	font-size: 3.5em;
 	font-weight: normal;
+	color: #005580;
+	
+
+	 
 }
+h3{
+	font-size: 3.5em;
+	font-weight: normal;
+	color: #005580;
+	margin-left: 80px;
+}
+
 #hidden-html{
 	display: none;
 }
