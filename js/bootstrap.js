@@ -15,17 +15,26 @@ $.fn.serializeObject = function(){
 };
 
 
-var FormSetup = function(){
+var FormSetup = function(XEAC){
   $('select').chosen();
   $('form').on('submit', function(event){
     event.preventDefault();
     var data = $(this).serializeObject();
   });
+  $("#expedition-name").on('change', function(ev){
+    $("#expedition-name-autocomplete").empty();
+    XEAC.searchPeople(ev.target.value, function(people){
+      people.forEach(function(person){
+        $("#expedition-name-autocomplete").append("<li>"+person.name+"</li>")
+      });
+
+    });
+  });
 }
 
 var PageSetup = function(){
   $('button.add-your-expedition').on('click', function(){
-    $("html, body").stop().animate({scrollTop: $('form').position().top}, '500', 'swing', function() { 
+    $("html, body").stop().animate({scrollTop: $('form').position().top}, '500', 'swing', function() {
 
     });
   })
@@ -70,40 +79,23 @@ var ASSetup = function(){
 }
 
 var XEACSetup = function(){
-  var XEAC_URL = "http://data.library.amnh.org:8082/";
+  var XEAC_URL = "http://10.20.40.218:3000/";
   var XEAC_PATHS = {
-    SEARCH: "orbeon/xeac/results/?q=${query}%20AND%20entityType_facet:%22person%22"
+    SEARCH: "api/v1/people?name=${query}"
   }
-
   return {
     searchPeople: function(term, onSuccess){
-      $.post({
-        url: XEAC_URL + XEAC_PATHS.SEARCH.replace("${query}",term),
-        user: null,
-        contentType: "application/json",
-        data: JSON.stringify(expedition),
-        success: function(resp){
-          var hiddenDiv = document.createElement("div");
-          hiddenDiv.innerHTML = resp
-          var h3s = hiddenDiv.getElementsByTagName("h3");
-          var results = [];
-          for( var ix=2; ix < h3s.length; ix++ ){
-            var header = h3s[ix];
-            results.push({
-              name: header.innerText,
-              id: header.getElementsByTagName("a")[0].href.substring(49)
-            });
-          }
-          onSuccess(JSON.parse(resp));
-        }
+      $.get({
+        url: XEAC_URL + XEAC_PATHS.SEARCH.replace("${query}",encodeURIComponent(term)),
+        success: onSuccess
       });
     }
   }
 }
 
 jQuery(function(){
-  FormSetup();
-  PageSetup();
   var AS = ASSetup();
   var XEAC = XEACSetup();
+  FormSetup(XEAC);
+  PageSetup();
 });

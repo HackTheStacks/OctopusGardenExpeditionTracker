@@ -7,6 +7,7 @@
 	<script src="js/vendor/jquery/dist/jquery.js"></script>
 	<script src="js/vendor/chosen/chosen.jquery.js"></script>
 	<script src="js/vendor/validatejs/validate.js"></script>
+	<script src="js/vender/date-format/dateformat.min.js"></script>
 	<script src="js/forms.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<style>
@@ -54,14 +55,15 @@ div.panel.show {
 	<main class="form">
 		<form>
 			<section>
-				<h2>Expedtion Details</h2>
+				<h2>Expedition Details</h2>
 				<p>
 					An ArchivesSpace Integrated Tool to Track/Manage Fieldnotes & Expedition Media
 				</p>
 				<hr>
 				<div class="input">
 					<label for="expeditionName">Name of primary researcher</label>
-					<input type="text" name="creator">
+					<input type="text" name="creator" id="expedition-name">
+					<ul id="expedition-name-autocomplete"></ul>
 				</div>
 				<div class="input">
 					<label for="expeditionName">Name of expedition</label>
@@ -163,18 +165,18 @@ div.panel.show {
 			</div>
 		</form>
 	</main>
-	
+
 	<main>
 	<h2>About</h2>
 	<p>
-	Field expeditions are a major part of the Museum&apos;s scientific mission, with researchers, students, and curators participating in dozens of expeditions annually. The qualitative, observational data recorded by scientists during field expeditions are compiled into fieldnotes. Fieldnotes observe primary source specimens, or collections of specimens, that straddle research disciplines. They span the history of the museum in every science department and are still being created today. 
+	Field expeditions are a major part of the Museum&apos;s scientific mission, with researchers, students, and curators participating in dozens of expeditions annually. The qualitative, observational data recorded by scientists during field expeditions are compiled into fieldnotes. Fieldnotes observe primary source specimens, or collections of specimens, that straddle research disciplines. They span the history of the museum in every science department and are still being created today.
 	</p>
 	<p>
-	The Expedition Tracker is designed to enable the Museum to catalog and manage the lifecycle of field data. Thereby allowing staff the means to provide access and control over museum resources. 
+	The Expedition Tracker is designed to enable the Museum to catalog and manage the lifecycle of field data. Thereby allowing staff the means to provide access and control over museum resources.
 	</p>
 	</main>
-	
-	
+
+
 
 
 <h2>Why should you use Expedition Tracker?</h2>
@@ -212,6 +214,3 @@ for (i = 0; i < acc.length; i++) {
 </script>
 
 </body>
-	
-	
-	
