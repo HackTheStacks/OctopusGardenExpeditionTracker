@@ -1,0 +1,9 @@
+body{
+	line-height: 1.5em;
+	font-family: 'sans-serif';
+}
+input[type=text]{
+	padding:5px 10px;
+	font-family: sans-serif;
+	border:1px solid #ddd;
+}
