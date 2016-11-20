@@ -1,9 +1,15 @@
-label{
-	width: 200px;
-	display: inline-block;
+form{
+	width: 80%;
+	max-width: 800px;
+	margin:0 auto;
+	padding-top: 2em;
 }
-input[type=text]{
-	padding:5px 10px;
+label{
+	display: block;
+	margin-bottom: 0.2em;
+}
+input[type=text], textarea{
+	padding:10px 15px;
 	font-family: sans-serif;
 	border:1px solid #ddd;
 	font-size: 1em;
@@ -20,9 +26,20 @@ button{
 	background: #75cc77;
 	border: none;
 	padding: 10px 15px;
-	border-radius: 2px;
 	transition: .2s;
+	text-transform: uppercase;
 }
 button:hover{
 	background-color: #5aaf5c;
+}
+.media{
+	background: #eee;
+	margin-bottom: 1em;
+	padding: 1em 1em 1em 4em;
+}
+.media span.number{
+	font-size: 2em;
+	position: absolute;
+	margin-left:-1.5em;
+	margin-top:5px;
 }
