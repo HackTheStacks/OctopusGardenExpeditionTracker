@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "homepage": "https://HackTheStacks.github.io/OctopusGardenExpeditionTracker",
   "authors": [
-    "Jesse Lee <mienaikoe@gmail.com>"
+    "Jesse Lee <mienaikoe@gmail.com>",
+    "Jeff Jassky",
+    "Claire Sun"
   ],
   "description": "Expedition Form tracking",
   "main": "js/bootstrap.js",
@@ -21,5 +23,7 @@
     "js/vendor",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+  }
 }
