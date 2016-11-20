@@ -14,9 +14,39 @@ $.fn.serializeObject = function(){
    return o;
 };
 
+
+var  FormSetup = function(){
+  $('form').on('submit', function(event){
+    event.preventDefault();
+    var data = $(this).serializeObject();
+  });
+}
+
+
+var APISetup = function(){
+  var ARCHIVESPACE_USERNAME = "jlee";
+  var ARCHIVESPACE_PASSWORD = "hackathon";
+  var ARCHIVESPACE_URL = "http://data.library.amnh.org:8081/";
+
+  return {
+    ASLogin: function(onSuccess, onError){
+      $.post({
+        url: ARCHIVESPACE_URL + "users/"+ARCHIVESPACE_USERNAME+"/login",
+        password: ARCHIVESPACE_PASSWORD,
+        success: function(resp){
+          var response = JSON.parse(resp);
+          localStorage.set("session",response.session);
+          onSuccess(response);
+        }
+      });
+    }
+  }
+
+}
+
+
+
 jQuery(function(){
-	$('form').on('submit', function(event){
-		event.preventDefault();
-		var data = $(this).serializeObject();
-	});
+  FormSetup();
+  var API = APISetup();
 });
