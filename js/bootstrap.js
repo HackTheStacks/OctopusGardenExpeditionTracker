@@ -35,7 +35,7 @@ var ASSetup = function(){
 
 
   return {
-    ASLogin: function(onSuccess, onError){
+    login: function(onSuccess, onError){
       $.post({
         url: ARCHIVESPACE_URL + ARCHIVESPACE_PATHS.LOGIN,
         password: ARCHIVESPACE_PASSWORD,
@@ -45,21 +45,27 @@ var ASSetup = function(){
           onSuccess(response);
         }
       });
+    },
+    createExpedition: function(expedition, onSuccess){
+      $.post({
+        url: ARCHIVESPACE_URL + ARCHIVESPACE_PATHS.EXPEDITION,
+        headers: DEFAULT_HEADERS,
+        contentType: "application/json",
+        data: JSON.stringify(expedition),
+        success: function(resp){
+          onSuccess(JSON.parse(resp));
+        }
+      });
     }
-  },
-  createExpedition: function(expedition, ){
-    $.post({
-      url: ARCHIVESPACE_URL + ARCHIVESPACE_PATHS.LOGIN,
-      password: ARCHIVESPACE_PASSWORD,
-      success: function(resp){
-        var response = JSON.parse(resp);
-        DEFAULT_HEADERS["X-ArchivesSpace-Session"] = response.session;
-        onSuccess(response);
-      }
-    });
   }
+}
 
+var XEACSetup = function(){
+  var XEAC_URL = "http://data.library.amnh.org:8082/exist/rest/db";
 
+  return {
+
+  }
 }
 
 
